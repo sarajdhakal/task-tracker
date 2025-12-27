@@ -9,9 +9,8 @@ export function TaskAdd({ onAdd }) {
             id: Date.now(),
             ...data,
         };
-
         onAdd(newTask);
-        reset();
+        reset(); // Reset the form after submission
     };
 
     return (

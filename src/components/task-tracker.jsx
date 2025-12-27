@@ -73,6 +73,17 @@ export default function TaskTracker() {
         }
     };
 
+    const handleSort = (sortBy) => {
+        let sortedTasks = [...filteredTasks];
+        if (sortBy === "Name") {
+            sortedTasks.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortBy === "Date") {
+            sortedTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+        }
+        setFilteredTasks(sortedTasks);
+    };
+
+
 
     return (
         <>
@@ -81,7 +92,7 @@ export default function TaskTracker() {
                     <div className="mb-4 md:mb-0">
                         <h1 className="text-4xl font-bold">Task Tracker</h1>
                         <p className="text-gray-500 mt-2">
-                            Keep track of your tasks. Add, update, delete, and search tasks easily.
+                            Keep track of your tasks. Add, update, delete and search tasks easily.
                         </p>
                     </div>
 
@@ -97,7 +108,7 @@ export default function TaskTracker() {
                     )}
                 </div>
 
-                <TaskSearch onSearch={handleSearch} onFilter={handleStatusChange} />
+                <TaskSearch onSearch={handleSearch} onFilter={handleStatusChange} onSort={handleSort} />
                 <TaskList tasks={filteredTasks} onDelete={handleDelete} onUpdate={handleUpdate} />
 
             </main>
