@@ -9,7 +9,7 @@ export function TaskList({ tasks, onDelete, onUpdate }) {
         const [dueDate, setDueDate] = useState(task.dueDate || "");
 
         const handleUpdate = () => {
-            onUpdate({ ...task, title, status });
+            onUpdate({ ...task, title, status, description, dueDate });
             onClose();
         };
 
@@ -171,7 +171,6 @@ export function TaskList({ tasks, onDelete, onUpdate }) {
         );
     }
 
-
     const [selectedTask, setSelectedTask] = useState(null);
     const [isEditOpen, setIsEditOpen] = useState(false);
     const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -187,10 +186,7 @@ export function TaskList({ tasks, onDelete, onUpdate }) {
 
                     {tasks.map((task) => (
 
-                        <div
-                            key={task.id}
-                            className="relative bg-neutral-primary-soft p-4 border rounded-lg shadow"
-                        >
+                        <div key={task.id} className="relative bg-neutral-primary-soft p-4 border rounded-lg shadow" >
                             <div className="flex flex-col items-center">
                                 <h5 className="text-xl font-semibold">
                                     {task.title}
@@ -204,13 +200,11 @@ export function TaskList({ tasks, onDelete, onUpdate }) {
 
                                 <div className="flex mt-4 gap-4">
                                     {/* Edit */}
-                                    <button
-                                        onClick={() => {
-                                            setSelectedTask(task); // set the task to edit
-                                            setIsEditOpen(true);   // open the modal
-                                        }}
-                                        className="rounded-md bg-blue-600 px-2.5 py-1.5 text-sm font-semibold text-white hover:bg-blue-400"
-                                    >
+                                    <button onClick={() => {
+                                        setSelectedTask(task); // set the task to edit
+                                        setIsEditOpen(true);   // open the modal
+                                    }}
+                                        className="rounded-md bg-blue-600 px-2.5 py-1.5 text-sm font-semibold text-white hover:bg-blue-400">
                                         Edit
                                     </button>
 

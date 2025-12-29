@@ -12,11 +12,13 @@ export const addTask = (task) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             const tasks = getTasksFromStorage();
-            const updated = [...tasks, task];
-            saveTasksToStorage(updated);
-            resolve(task);
+            const newTask = { ...task, id: Date.now().toString() };
+            tasks.push(newTask);
+            saveTasksToStorage(tasks);
+            resolve(newTask);
         }, 300);
-    });
+    }
+    );
 };
 
 export const updateTask = (updatedTask) => {

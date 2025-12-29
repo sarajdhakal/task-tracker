@@ -16,19 +16,6 @@ export default function TaskTracker() {
         });
     }, []);
 
-    useEffect(() => {
-        const stored = localStorage.getItem("tasks");
-        if (stored) {
-            setTasks(JSON.parse(stored));
-        }
-    }, []);
-
-    /* save tasks to local storage */
-    useEffect(() => {
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-    }, [tasks]);
-
-
     const handleAddTask = async (task) => {
         const added = await addTask(task);
         const updated = [...tasks, added];
@@ -92,7 +79,7 @@ export default function TaskTracker() {
                     <div className="mb-4 md:mb-0">
                         <h1 className="text-4xl font-bold">Task Tracker</h1>
                         <p className="text-gray-500 mt-2">
-                            Keep track of your tasks. Add, update, delete and search tasks easily.
+                            Keep track of your tasks. Add, update, delete, search, filter and sort tasks easily.
                         </p>
                     </div>
 

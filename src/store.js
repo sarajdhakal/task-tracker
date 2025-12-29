@@ -1,5 +1,7 @@
 const STORAGE_KEY = "tasks";
 
+
+
 export const getTasksFromStorage = () => {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 };
